@@ -51,9 +51,16 @@ console.log(customer2);
 */
     console.log(customer2.greeting());
 /*
-        2- If I check my constructor in the console inside __proto__ I see that is Person and not Customer
+        2-  - Comment line 59 to see the difference
+            - If I check my constructor in the console inside __proto__ I see that is Person and not Customer
 */
 
 // Make Customer.prototype return Customer()
-                    // Uncomment the line of code below to see the difference 
-// Customer.prototype.constructor = Customer;
+Customer.prototype.constructor = Customer;
+
+// Make a custom Customer greeting
+Customer.prototype.greeting = function() {
+    // Remember that name and surName are taked from Person so you actually have to call this.name and this.surName from Person constractor
+    return `Hello there ${this.name} ${this.surName}, welcome to our company. Your membership is ${this.membership}. We'll be in touch with you at your phone number ${this.phone}`
+}
+// console.log(customer2.greeting()); // Uncomment this to see the difference with the log in line 52
